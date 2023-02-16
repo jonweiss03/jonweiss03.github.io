@@ -68,15 +68,7 @@ document.getElementById("control").value=controlmod;
 }
 
 
-//function hello() {
-//alert('hello');
 
-//var z = 0;
-//var y = Boolean(Number(z)).toString().substring(0, 1).toUpperCase().replace("T", "Y").replace("F", "N"); 
-//alert(y);
-
-
-//}
 
 
 function reloadEmail() {
@@ -191,7 +183,7 @@ var pfl = document.getElementById("Preset_Profiles").value;
 
 if(pfl == 1) {
 document.getElementById("Strategy").value="WHN";
-document.getElementById("Camp_Type").value="engagement";
+document.getElementById("Camp_Type").value="Engagement";
 document.getElementById("Start_Date").value="2023-02-01";
 document.getElementById("End_Date").value="2023-03-01";
 document.getElementById("Genre_1").value="Rock";
@@ -207,7 +199,7 @@ updateEmail();
 
 else if(pfl == 2) {
 document.getElementById("Strategy").value="WHN";
-document.getElementById("Camp_Type").value="engagement";
+document.getElementById("Camp_Type").value="Engagement";
 document.getElementById("Start_Date").value="2023-02-01";
 document.getElementById("End_Date").value="2023-03-01";
 document.getElementById("Genre_1").value="Sports";
@@ -223,7 +215,7 @@ updateEmail();
 
 else if(pfl == 3) {
 document.getElementById("Strategy").value="FOMO";
-document.getElementById("Camp_Type").value="engagement";
+document.getElementById("Camp_Type").value="Engagement";
 document.getElementById("Start_Date").value="2023-02-15";
 document.getElementById("End_Date").value="2023-03-15";
 document.getElementById("Genre_1").value="Pop";
@@ -239,7 +231,7 @@ updateEmail();
 
 else if(pfl == 4) {
 document.getElementById("Strategy").value="FOMO";
-document.getElementById("Camp_Type").value="engagement";
+document.getElementById("Camp_Type").value="Engagement";
 document.getElementById("Start_Date").value="2023-02-15";
 document.getElementById("End_Date").value="2023-03-15";
 document.getElementById("Genre_1").value="Rock";
@@ -255,7 +247,7 @@ updateEmail();
 
 else if(pfl == 5) {
 document.getElementById("Strategy").value="SYBG";
-document.getElementById("Camp_Type").value="engagement";
+document.getElementById("Camp_Type").value="Engagement";
 document.getElementById("Start_Date").value="2022-07-01";
 document.getElementById("End_Date").value="2023-02-15";
 document.getElementById("Genre_1").value="Rock";
@@ -277,9 +269,77 @@ function clearprofile() {
 document.getElementById("Preset_Profiles").value="";
 }
 
+
+function getParams() {
+ const urlParams = new URL(window.location.toLocaleString()).searchParams;
+
+const strat = urlParams.get('strat').toUpperCase();
+const camp_type = toTitleCase(urlParams.get('camp_type'));
+const start_dt = urlParams.get('start_dt');
+const end_dt = urlParams.get('end_dt');
+const inclusions = urlParams.get('inclusions');
+const exclusions = urlParams.get('exclusions');
+const genre1 = toTitleCase(urlParams.get('genre1'));
+const genre2 = toTitleCase(urlParams.get('genre2'));
+const genre3 = toTitleCase(urlParams.get('genre3'));
+const genre4 = toTitleCase(urlParams.get('genre4'));
+const genre5 = toTitleCase(urlParams.get('genre5'));
+const genre6 = toTitleCase(urlParams.get('genre6'));
+const genre7 = toTitleCase(urlParams.get('genre7'));
+const zoom = urlParams.get('zoom');
+
+var inc_arr = inclusions.split('|');
+var inc_element = document.getElementById('Inclusions');
+
+for (var i = 0; i < inc_element.options.length; i++) {
+   inc_element.options[i].selected = inc_arr.indexOf(inc_element.options[i].value) >= 0;
+   }
+   
+   
+var exc_arr = exclusions.split('|');
+var exc_element = document.getElementById('Exclusions');
+
+for (var i = 0; i < exc_element.options.length; i++) {
+   exc_element.options[i].selected = exc_arr.indexOf(exc_element.options[i].value) >= 0;
+   }   
+
+
+
+document.getElementById("Strategy").value=strat;
+document.getElementById("Camp_Type").value=camp_type;
+document.getElementById("Start_Date").value=start_dt;
+document.getElementById("End_Date").value=end_dt;
+document.getElementById("Genre_1").value=genre1;
+document.getElementById("Genre_2").value=genre2;
+document.getElementById("Genre_3").value=genre3;
+document.getElementById("Genre_4").value=genre4;
+document.getElementById("Genre_5").value=genre5;
+document.getElementById("Genre_6").value=genre6;
+document.getElementById("Genre_7").value=genre7;
+
+
+reloadEmail();
+
+
+if(zoom >=25 && zoom <=130) {
+var zoom_mod = zoom.toString() + "\%";
+
+document.getElementById("zoomdiv").style.zoom=zoom_mod;
+document.getElementById("control").value=zoom;
+
+}
+
+}
+
+function toTitleCase(str) {
+  return str.toLowerCase().split(' ').map(function (word) {
+    return (word.charAt(0).toUpperCase() + word.slice(1));
+  }).join(' ');
+}
+
 </script>
 
-<body style="margin:0px; padding:0px;" bgcolor="#888888" cellSpacing="0" cellPadding="0" align="center" border="0" >
+<body style="margin:0px; padding:0px;" bgcolor="#888888" cellSpacing="0" cellPadding="0" align="center" border="0" onload="getParams()">
 <Table width="100%" cellSpacing="0" cellPadding="0" align="center" border="0">
 <tr>
 <td width="25%" bgcolor="#888888" align="center" valign="top">
@@ -323,7 +383,7 @@ document.getElementById("Preset_Profiles").value="";
 		<select name = "Camp_Type" id="Camp_Type" onchange="clearprofile()">
 		<option value = "-99"></option>
 		<option value = "offer">Offer</option>
-		<option value = "engagement">Engagement</option>
+		<option value = "Engagement">Engagement</option>
 		</select>
 		</form>
 	</div>
@@ -348,7 +408,7 @@ document.getElementById("Preset_Profiles").value="";
 		<select name = "Inclusions" id="Inclusions" onchange="clearprofile()" multiple class="tallselect"> 
 		<option value = "Shows">Shows</option>
 		<option value = "Channels">Channels</option>
-		<option value = "Artist">Artists</option>		
+		<option value = "Artists">Artists</option>		
 		<option value = "Hosts">Hosts</option>
 		<option value = "Festivals">Festivals</option>
 		<option value = "Tours">Tours</option>
@@ -369,7 +429,7 @@ document.getElementById("Preset_Profiles").value="";
 		<select name = "Exclusions" id="Exclusions" onchange="clearprofile()" multiple class="tallselect"> 
 		<option value = "Shows">Shows</option>
 		<option value = "Channels">Channels</option>
-		<option value = "Artist">Artists</option>		
+		<option value = "Artists">Artists</option>		
 		<option value = "Hosts">Hosts</option>
 		<option value = "Festivals">Festivals</option>
 		<option value = "Tours">Tours</option>
