@@ -1,7 +1,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
 
-select {
+select:not(#Inclusions, #Exclusions)  {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
@@ -55,18 +55,26 @@ input[type="date"]{
 }
 
 
-input[type="range"]{
-    -moz-appearance: none;
+#Inclusions, #Exclusions {
+	-moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
+    background-color: #424242;
+    background-repeat: no-repeat;
+    background-position: right .7em top 60%, 0 0;
+    background-size: .99em auto;
+	height: 60px;
+	width: 210px;;
 	font-family: 'Roboto', sans-serif;
-	color: #b0b0b0;
-	border-radius: 10px;
-	border-color: #ffffff;
-	border-width: 1px;
+	font-size: 15px;
 	padding-left: 0px;
 	padding-right: 0px;
-	
+	color: #b0b0b0;
+	border-radius: 5px;
+
+	border-color: #ffffff;
+	border-width: 1px;
+
 	}
 
 
