@@ -54,6 +54,11 @@ input[type="date"]{
   transition: opacity .2s;
 }
 
+input[type="range"] {
+		border-radius: 10px;
+
+}
+
 
 #Inclusions, #Exclusions {
 	-moz-appearance: none;
