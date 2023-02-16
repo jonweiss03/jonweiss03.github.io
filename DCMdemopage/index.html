@@ -68,15 +68,15 @@ document.getElementById("control").value=controlmod;
 }
 
 
-function hello() {
-alert('hello');
+//function hello() {
+//alert('hello');
 
-var z = 0;
-var y = Boolean(Number(z)).toString().substring(0, 1).toUpperCase().replace("T", "Y").replace("F", "N"); 
-alert(y);
+//var z = 0;
+//var y = Boolean(Number(z)).toString().substring(0, 1).toUpperCase().replace("T", "Y").replace("F", "N"); 
+//alert(y);
 
 
-}
+//}
 
 
 function reloadEmail() {
@@ -308,7 +308,7 @@ document.getElementById("Preset_Profiles").value="";
 	<div style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; padding-bottom: 4px;">Strategy</div>
 	<div>
 		<form>
-		<select name = "Strategy" id="Strategy" onchange="clearprofile()" >
+		<select type="text" name = "Strategy" id="Strategy" onchange="clearprofile()" >
 		<option value = "-99"></option>
 		<option value = "WHN">What's Hot Now</option>
 		<option value = "FOMO">Fear of Missing Out</option>
@@ -502,7 +502,7 @@ document.getElementById("Preset_Profiles").value="";
 </td>
 <td width="75%" bgcolor="#F0F0F0" align="center" valign= "top" style = "padding-top:25px;">
 <div style="align:center;" >
-<button onclick="updateEmail()" name = "Reload"><b>Reload Email</b></button>
+<button onclick="reloadEmail()" name = "Reload"><b>Reload Email</b></button>
 </div>
 
 
