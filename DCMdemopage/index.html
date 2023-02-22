@@ -273,6 +273,18 @@ document.getElementById("Preset_Profiles").value="";
 function getParams() {
  const urlParams = new URL(window.location.toLocaleString()).searchParams;
 
+const zoom = urlParams.get('zoom');
+
+if(zoom >=25 && zoom <=130) {
+var zoom_mod = zoom.toString() + "\%";
+
+document.getElementById("zoomdiv").style.zoom=zoom_mod;
+document.getElementById("control").value=zoom;
+
+
+}
+
+ 
 const strat = urlParams.get('strat').toUpperCase();
 const camp_type = toTitleCase(urlParams.get('camp_type'));
 const start_dt = urlParams.get('start_dt');
@@ -286,7 +298,7 @@ const genre4 = toTitleCase(urlParams.get('genre4'));
 const genre5 = toTitleCase(urlParams.get('genre5'));
 const genre6 = toTitleCase(urlParams.get('genre6'));
 const genre7 = toTitleCase(urlParams.get('genre7'));
-const zoom = urlParams.get('zoom');
+
 
 var inc_arr = inclusions.split('|');
 var inc_element = document.getElementById('Inclusions');
@@ -319,22 +331,9 @@ document.getElementById("Genre_7").value=genre7;
 
 
 updateEmail();
-loadZoom(zoom);
-}
-
-
-function loadZoom(zoom) {
-
-if(zoom >=25 && zoom <=130) {
-var zoom_mod = zoom.toString() + "\%";
-
-document.getElementById("zoomdiv").style.zoom=zoom_mod;
-document.getElementById("control").value=zoom;
-
 
 }
 
-}
 
 function toTitleCase(str) {
   return str.toLowerCase().split(' ').map(function (word) {
