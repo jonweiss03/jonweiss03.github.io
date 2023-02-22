@@ -318,14 +318,19 @@ document.getElementById("Genre_6").value=genre6;
 document.getElementById("Genre_7").value=genre7;
 
 
-reloadEmail();
+updateEmail();
+loadZoom(zoom);
+}
 
+
+function loadZoom(zoom) {
 
 if(zoom >=25 && zoom <=130) {
 var zoom_mod = zoom.toString() + "\%";
 
 document.getElementById("zoomdiv").style.zoom=zoom_mod;
 document.getElementById("control").value=zoom;
+
 
 }
 
