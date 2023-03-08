@@ -1,0 +1,328 @@
+<head>
+<link rel="stylesheet" href="dropdown2.css">	
+
+<style>
+</style>
+</head>
+<title>Dynamic Content Marketing - DEMO</title>
+</head>
+<style>
+h4 {
+font-family: Arial, Helvetica, sans-serif;
+font-size: 18px;
+}
+</style>
+
+<script>
+
+function zoomFunction() {
+var controlval = document.getElementById("control").value;
+var controlpct = controlval + "\%"
+//alert(controlpct);
+//var t1 = document.getElementById("startframe");
+//t1.classList.add('emframe25');
+document.getElementById("zoomdiv").style.zoom=controlpct;
+
+}
+
+function zoomminus() {
+//alert("hello");
+var controlval = document.getElementById("control").value;
+	if(controlval <= 35) {
+	var controlmod = 25;
+	var controlpct = "25%";
+	}
+	else {
+	//alert("hello");
+	var controlmod = controlval - 10;
+	var controlpct = controlmod + "\%"
+	}
+
+//alert(controlpct);
+//var t1 = document.getElementById("startframe");
+//t1.classList.add('emframe25');
+document.getElementById("zoomdiv").style.zoom=controlpct;
+document.getElementById("control").value=controlmod;
+
+}
+
+function zoomplus() {
+//alert("hello");
+var controlval = document.getElementById("control").value;
+	if(controlval >= 120) {
+	var controlmod = 130;
+	var controlpct = "130%";
+	}
+	else {
+	//alert("hello");
+	var controlmod = controlval - (-10);
+	var controlpct = controlmod + "\%"
+	}
+
+//alert(controlpct);
+//var t1 = document.getElementById("startframe");
+//t1.classList.add('emframe25');
+document.getElementById("zoomdiv").style.zoom=controlpct;
+document.getElementById("control").value=controlmod;
+
+}
+
+
+
+
+
+function reloadEmail() {
+
+var CC = document.getElementById("CreativeCode").value;
+
+if(CC == "") {
+alert("Please provide a Creative Code.");
+document.getElementById("CreativeCode").focus();
+
+return;
+}
+
+
+updateEmail();
+}
+
+
+
+function updateEmail() {
+document.getElementById("putithere").innerHTML="";
+var getDCM = document.getElementById("getDCM").innerHTML;
+
+var CC = document.getElementById("CreativeCode").value;
+var finalHTML = getDCM.replace(/%%creative_id%%/g, CC);
+
+document.getElementById("putithere").innerHTML=finalHTML;
+}
+
+
+
+
+function getParams() {
+ const urlParams = new URL(window.location.toLocaleString()).searchParams;
+
+const zoom = urlParams.get('zoom');
+
+if(zoom >=25 && zoom <=130) {
+var zoom_mod = zoom.toString() + "\%";
+
+document.getElementById("zoomdiv").style.zoom=zoom_mod;
+document.getElementById("control").value=zoom;
+
+
+}
+
+ 
+const CC = urlParams.get('cc').toUpperCase();
+
+document.getElementById("CreativeCode").value=CC;
+
+updateEmail();
+
+}
+
+
+function toTitleCase(str) {
+  return str.toLowerCase().split(' ').map(function (word) {
+    return (word.charAt(0).toUpperCase() + word.slice(1));
+  }).join(' ');
+}
+
+</script>
+
+<body style="margin:0px; padding:0px;" bgcolor="#888888" cellSpacing="0" cellPadding="0" align="center" border="0" onload="getParams()">
+<Table width="100%" cellSpacing="0" cellPadding="0" align="center" border="0">
+<tr>
+<td width="25%" bgcolor="#888888" align="center" valign="top">
+<div align="left" style="padding-left: 35px; padding-right:15px; padding-top:15px;" valign="top">
+&nbsp;
+	<div valign="top" style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; padding-bottom: 4px;"><b>Creative Code</b></div>
+
+	<div style="padding-bottom: 10px;">
+		<form>
+		<input type="text" id="CreativeCode" name="CreativeCode" required>
+		</form>
+	</div>
+
+		<div style="align:center;" >
+<button onclick="reloadEmail()" name = "Reload"><b>Reload Email</b></button>
+</div>
+	
+	
+</div>
+</td>
+<td width="75%" bgcolor="#F0F0F0" align="center" valign= "top" style = "padding-top:25px;">
+
+
+
+
+
+<div style="padding-top:15px; align:center;" >
+	<table cellSpacing="0" cellPadding="0" align="center" border="0">
+		<tr>
+			<td><img onclick="zoomminus()" src="img1.png" border="0" height="34"  alt="" style="display:block; padding-left: 1px;;" /></td>
+			<td width="5">&nbsp;&nbsp;</td>
+			<td>
+				<div class="slidecontainer">
+				<input type="range" min="25" max="130" value="100" class="slider" id="control" onchange="zoomFunction()" style="width:250px;">
+				</div>
+			</td>
+			<td width="5">&nbsp;&nbsp;</td>
+			<td><img onclick="zoomplus()" src="	img9.png" border="0" height="34"  alt="" style="display:block;" /></td>
+
+		</tr>
+	</table>
+</div>
+<br />
+&nbsp;
+
+<table cellSpacing="0" cellPadding="0" align="center" border="0">
+	<tr>
+		<td vAlign="top";>
+<div id="zoomdiv" class="emframe">
+
+											  <TABLE valign="top" style="MAX-WIDTH: 540px; border-style: solid; border-color:#fff; border-width:2px;" cellSpacing="0" cellPadding="0" width="540" align="center" border="0">
+												<TBODY>
+												<TR>
+												  <TD> 
+										<table width="540" border="0" cellpadding="0" cellspacing="0" align="center" style="width: 540px; background-color:#fff;">
+															 <tbody>
+																<tr>
+																   <td width="297" valign="middle" style="font-family:arial,verdana,sans-serif; font-size:12px; color:#202124; line-height: 18px; padding-top: 5px; padding-left: 20px; padding-bottom: 6px;" >
+													 <strong>Get your weekly fix of all things SiriusXM.<br></strong> 
+
+																   </td>
+																   <td width="243" style="text-align: right;" align="right">
+																	  <a href="https://t.e.siriusxm.com/r/?id=hcb82eaaf,5ec658f5,37c7ab73 &utm_source=WK-07_AA-03-mo-for-002_T7-BAU-Reorg&utm_medium=EM&utm_campaign=OEM_New_BAU" _label="SXM_header_logo"><img src="http://res.e.siriusxm.com/res/siriusx_mid_prod1/39b6fc9b0f6cef6fd89f05edaf92a1a5.jpg" border="0" width="243"  alt="" style="display:block; float: right;"/></a>
+																   </td>
+																</tr>
+															 </tbody>
+														  </table>
+										
+										<TABLE cellSpacing="0" cellPadding="0" width="540" align="center" border="0">
+										  <TBODY>
+										  <TR>
+											<TD vAlign="top" width="540" align="center">
+										  <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="540" style="max-width:540px;">
+										<tbody>
+
+											 <tr>
+										<td width="540" align="left" valign="top" bgcolor="#ffffff" style="font-family: 'GT America Regular', Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 24px; mso-line-height-rule: exactly; line-height: 28px; color: #ffffff; "></td>
+										</tr>
+										</tbody>
+										</table>
+										
+										<TABLE style="MAX-WIDTH: 540px" cellSpacing="0" cellPadding="10" width="540" align="center" border="0">
+										<TR>
+										<TD style="FONT-SIZE: 10px; FONT-FAMILY: Verdana, Geneva, sans-serif; COLOR: #666666; LINE-HEIGHT: 14px" bgColor="#ffffff" vAlign="top" align="left">
+										<HR>
+										</TD>
+										</TR>
+										</TABLE>
+										
+										
+
+							
+
+										
+										
+										
+										
+										<div id="putithere">
+							
+										
+										</div>	
+										
+										
+										
+										
+										
+								
+										
+
+
+
+										  
+
+										<TABLE style="MAX-WIDTH: 540px" cellSpacing="0" cellPadding="10" width="540" align="center" border="0">
+										<TBODY>
+										<TR>
+										<TD style="FONT-SIZE: 10px; FONT-FAMILY: Verdana, Geneva, sans-serif; COLOR: #666666; LINE-HEIGHT: 14px" bgColor="#ffffff" vAlign="top" align="left">
+										<HR>
+										<BR> To ensure that you continue receiving SiriusXM emails, please add us to your address book or safe list. To unsubscribe, please <a _category="Opt_Out" style="COLOR: #11aaff" href="https://t.e.siriusxm.com/r/?id=hcb82eaaf,5ec658f5,37c7aba4&p1=ZW09T0VNX05vblNDX0VtYWlsQHNpcml1c3htLmNvbSZjZmlkPVNYTV9FTV9NS1ROR19DT01NJmxraWQ9LTE2NzE3NTg4OTc5MjMmZGVwbG95bWVudGRhdGU9MjAyMzAyMDUmY2FtcGFpZ25JRD1FTV9NT0RfT0VNX05vblNDX1RyaWdnZXJfN19TZWVkX0RlbGl2ZXJ5" _label="Unsub">click here</A>. <BR><BR>NOTE: Please allow up to 10 business days for your preferences to be applied. You may still receive service-related emails if the email address is associated with your subscriber account. <BR><BR>
+										 Have you moved or changed your billing information? Please take a minute now to <a style="COLOR: #11aaff" href="https://t.e.siriusxm.com/r/?id=hcb82eaaf,5ec658f5,37c7aba5 &utm_source=WK-07_AA-03-mo-for-002_T7-BAU-Reorg&utm_medium=EM&utm_campaign=OEM_New_BAU">update your account information</A>. <BR><BR> You can read our entire <a style="COLOR: #11aaff" href="https://t.e.siriusxm.com/r/?id=hcb82eaaf,5ec658f5,37c7aba6 &utm_source=WK-07_AA-03-mo-for-002_T7-BAU-Reorg&utm_medium=EM&utm_campaign=OEM_New_BAU" _label="PrivacyPolicy" _category="Legal">Privacy Policy</A>. <BR><BR><!-- Customer Agreement -->See our Customer Agreement for complete terms at <a style="COLOR: #11aaff" href="https://t.e.siriusxm.com/r/?id=hcb82eaaf,5ec658f5,37c7aba7 &utm_source=WK-07_AA-03-mo-for-002_T7-BAU-Reorg&utm_medium=EM&utm_campaign=OEM_New_BAU" _label="CustAgreement" _category="Legal">www.siriusxm.com</A>. <BR><BR>
+										Sirius XM Radio Inc.<BR>1221 Avenue of the Americas<BR>New York, New York 10020<BR><a style="COLOR: #11aaff" href="https://t.e.siriusxm.com/r/?id=hcb82eaaf,5ec658f5,37c7aba8 &utm_source=WK-07_AA-03-mo-for-002_T7-BAU-Reorg&utm_medium=EM&utm_campaign=OEM_New_BAU">www.siriusxm.com</a>
+										<BR><BR>
+										  <BR> 
+										<HR>
+										<BR>© 2023 Sirius XM Radio Inc. SiriusXM, Pandora, Stitcher and all related logos are trademarks of Sirius XM Radio Inc. and its respective subsidiaries.  Other marks, channel names and logos are the property of their respective owners. All rights reserved.
+										<BR><BR></TD></TR></TBODY></TABLE>
+										
+
+
+									
+
+										 
+											  </TD></TR></TBODY></TABLE>
+												
+
+
+
+
+</div>
+</td></tr></table>
+
+
+</td>
+</tr>
+</table>
+
+
+
+
+<div id="getDCM" style="visibility: hidden;">
+
+
+										
+										
+										
+										<table width="540" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+											<tr>
+												
+												<td width="540" align="center">
+												<div class=""  >
+												
+												<div style="z-index: -1;">
+												
+												<img src= "https://www.movable-ink-5041.com/p/rp/904c9c6c258491d8.png?mi_u=&mi_sal=0&mi_deploymentdate=&mi_dtok=&mi_svid=Testing&mi_ovid=Testing&mi_mcc=&mi_creative_id=%%creative_id%%&mi_placement_num=1&EML=&DeviceID=&RadioID=&ATOK=&subscriptionId=&PartyID=&GUPID=" style="display:block; z-index:-1;"/>
+												
+												<img src= "https://www.movable-ink-5041.com/p/rp/06dbc0773b91e15e.png?mi_u=&mi_sal=0&mi_deploymentdate=&mi_dtok=&mi_svid=Testing&mi_ovid=Testing&mi_mcc=&mi_creative_id=%%creative_id%%&mi_placement_num=2&EML=&DeviceID=&RadioID=&ATOK=&subscriptionId=&PartyID=&GUPID=" style="display:block; z-index:-1;" />
+												
+												<img src= "https://www.movable-ink-5041.com/p/rp/8afdf7b95f8a6b76.png?mi_u=&mi_sal=0&mi_deploymentdate=&mi_dtok=&mi_svid=Testing&mi_ovid=Testing&mi_mcc=&mi_creative_id=%%creative_id%%&mi_placement_num=3&EML=&DeviceID=&RadioID=&ATOK=&subscriptionId=&PartyID=&GUPID=" style="display:block; z-index:-1;" />
+												
+												<img src= "https://www.movable-ink-5041.com/p/rp/7f0a874577b394a1.png?mi_u=&mi_sal=0&mi_deploymentdate=&mi_dtok=&mi_svid=Testing&mi_ovid=Testing&mi_mcc=&mi_creative_id=%%creative_id%%&mi_placement_num=4&EML=&DeviceID=&RadioID=&ATOK=&subscriptionId=&PartyID=&GUPID=" style="display:block; z-index:-1;" />
+												
+												<img src= "https://www.movable-ink-5041.com/p/rp/e74fb60c8ca76f41.png?mi_u=&mi_sal=0&mi_deploymentdate=&mi_dtok=&mi_svid=Testing&mi_ovid=Testing&mi_mcc=&mi_creative_id=%%creative_id%%&mi_placement_num=5&EML=&DeviceID=&RadioID=&ATOK=&subscriptionId=&PartyID=&GUPID=" style="display:block; z-index:-1;" />
+												
+												<img src= "https://www.movable-ink-5041.com/p/rp/4e26f8a9156db5f4.png?mi_u=&mi_sal=0&mi_deploymentdate=&mi_dtok=&mi_svid=Testing&mi_ovid=Testing&mi_mcc=&mi_creative_id=%%creative_id%%&mi_placement_num=6&EML=&DeviceID=&RadioID=&ATOK=&subscriptionId=&PartyID=&GUPID=" style="display:block; z-index:-1;" />
+												
+												</div>
+												
+												
+												</div>
+												</td>
+												
+												
+										
+											</tr>
+										</table>
+
+</div>
+
+
+
+
+</body>
